@@ -1,0 +1,26 @@
+<!--
+    String iterpolation 
+<h2>{{title}}</h2>
+
+<p>{{createdDate}}</p>
+
+
+<img src="{{imageUrl}}"  alt="{{title}}">
+<p>{{description}}</p>
+<p> ❤ {{snaps}}</p>
+Attribute binding
+<img [src]="imageUrl"  [alt]="title">
+-->
+
+
+<div class="face-snap-card"  [ngClass]="{snapped:buttonText==='Ops UnSnap'}">
+    <h2>{{ faceSnap.title | titlecase }}</h2>
+   
+    <p>Mis en ligne  {{ faceSnap.createdDate | date: 'le d MMMM yyyy' }}</p>
+    <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title">
+    <p>{{ faceSnap.description |titlecase }}</p>
+    <p *ngIf="faceSnap.location">Photo prise à 💢{{faceSnap.location}}</p>
+    <p> 
+        <button (click)="onSnap()">{{buttonText}}</button>
+        <span [ngStyle]="{color:'rgb(0,'+ faceSnap.snaps +',0)'}">👍{{ faceSnap.snaps }}</span></p>
+  </div>
